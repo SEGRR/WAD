@@ -1,24 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Checklist</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Travel Helper</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Custom styles -->
+  <style>
+    body{
+      overflow-x: hidden;
+    }
+    .jumbotron {
+      background-image: url('iced.webp');
+      /* Add your background image URL here */
+
+      background-repeat: no-repeat;
+      background-size: cover;
+      
+      background-size: cover;
+      text-align: center;
+      padding: 100px 0;
+      margin-bottom: 0;
+    }
+    .line{
+      width: 100%;
+      height: 3px;
+      background-color: #69a8ea;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    footer{
+      margin-top: 20px;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <h1>Travel Checklist</h1>
-    </header>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Travel Helper</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Destinations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="jumbotron">
+    <h1 class="display-4">Your Ultimate Travel Companion</h1>
+    <p class="lead">Discover new destinations, plan your trips, and make memories that last a lifetime.</p>
+    <a class="btn btn-primary btn-lg" href="signup.html" role="button">Get Started</a>
+  </div>
+
+  <div class="container" style="margin-top:20px">
+    <div class="row text-center"> 
+      <div class="col-3 d-flex flex-column justify-content-center">
+         <p class="fs-5 m-0">Personalized Trip Planning</p>
+         <div class="line"></div>
+         <p class="fw-light "> Tailor your journey to fit your preferences and interests</p>
+      </div>
+      <div class="col-3 d-flex flex-column justify-content-center">
+        <p class="fs-5 m-0">Destination Recommendations</p>
+        <div class="line"></div>
+        <p class="fw-light ">Discover hidden gems and popular hotspots around the globe.</p>
+     </div>
+
+     <div class="col-3 d-flex flex-column justify-content-center">
+      <p class="fs-5 m-0">Real-time Weather Updates</p>
+      <div class="line"></div>
+      <p class="fw-light ">Stay informed about the weather conditions at your destination.</p>
+   </div>
+
+   <div class="col-3 d-flex flex-column justify-content-center">
+    <p class="fs-5 m-0">See world through our guide</p>
+    <div class="line"></div>
+    <p class="fw-light ">we provide best areas and places to visit based on your prefered way</p>
+ </div>
+
+    </div>
+  </div>
+   
+  <div style="border-radius: 15px; margin-top: 10px;" class="container bg-dark p-3">
+    <div class="row">
+      <div class="col-6">
+        <img src="https://images.pexels.com/photos/3278215/pexels-photo-3278215.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+      </div>
+      <div class="col-md-6">
+        <p class="lh-base" style="color: rgb(179, 187, 193);">Embark on a seamless and enriching journey with our comprehensive Travel Guide. Our expertly curated guides are crafted to enhance your travel experience by offering insightful information on a myriad of destinations. Whether you're a thrill-seeker, history buff, or food enthusiast, our travel guides provide in-depth details about the local culture, attractions, cuisine, and hidden gems. Immerse yourself in the heart of each destination with our carefully researched tips and recommendations. From must-visit landmarks to off-the-beaten-path adventures, our travel guides are your compass to uncovering the essence of every place. Explore with confidence, armed with the knowledge and insights provided by our dedicated team of travel experts. Let the Travel Guide be your companion in discovering the extraordinary in every corner of the globe.</p>
+      </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <p class="lh-base" style="color: rgb(179, 187, 193);">Embark on a seamless and enriching journey with our comprehensive Travel Guide. Our expertly curated guides are crafted to enhance your travel experience by offering insightful information on a myriad of destinations. Whether you're a thrill-seeker, history buff, or food enthusiast, our travel guides provide in-depth details about the local culture, attractions, cuisine, and hidden gems. Immerse yourself in the heart of each destination with our carefully researched tips and recommendations. From must-visit landmarks to off-the-beaten-path adventures, our travel guides are your compass to uncovering the essence of every place. Explore with confidence, armed with the knowledge and insights provided by our dedicated team of travel experts. Let the Travel Guide be your companion in discovering the extraordinary in every corner of the globe.</p>
+    </div>
+    <div class="col-6">
+      <img height="333" width="555" src="https://www.forbes.com/advisor/wp-content/uploads/2023/07/travel-insurance-woman-on-boat.jpeg.jpg" alt="">
+    </div>
     
-    <section class="hero">
-        <p>Welcome to the ultimate travel checklist app. Sign up or log in to get started!</p>
-        <a href="signup.html">Sign Up</a>
-        <a href="login.html">Log In</a>
-    </section>
-    
-    <footer>
-        <p>&copy; 2023 Travel Checklist</p>
-    </footer>
+</div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">© 2024 Travel Helper</p>
+    </div>
+    <div class=" d-flex gap-5 flex-row justify-content-center">
+        <a class="text-decoration-none" href="https://github.com/segrr">Github@Segrr</a>
+  
+        <a class="text-decoration-none" href="https://github.com/segrr">Google@Segrr</a>
+
+        <a class="text-decoration-none" href="https://github.com/segrr">Facebook@Segrr</a>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-gp3NxZqmMvcv3Icft1c+oZfnX9KR0V1/+A7/IaaHs1P/ur9ujcTRQp+ah1fQ4ZJ" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy2JpNHaJNfNfNfNfNfNfNfNfNfNfNfNfN"
+    crossorigin="anonymous"></script>
+
 </body>
+
 </html>
