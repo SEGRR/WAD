@@ -1,0 +1,26 @@
+administrator@administrator-OptiPlex-5060:~/33371$ cd WAD
+administrator@administrator-OptiPlex-5060:~/33371/WAD$ git stage -A
+administrator@administrator-OptiPlex-5060:~/33371/WAD$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   dashboard.html
+        modified:   index.html
+        modified:   signup.html
+
+administrator@administrator-OptiPlex-5060:~/33371/WAD$ git commit -m "todo done"
+[main 308b7cf] todo done
+ 3 files changed, 285 insertions(+), 23 deletions(-)
+ create mode 100644 dashboard.html
+administrator@administrator-OptiPlex-5060:~/33371/WAD$ git push
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 6 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 4.15 KiB | 1.04 MiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/SEGRR/WAD.git
+   7b928b3..308b7cf  main -> main
