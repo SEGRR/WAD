@@ -43,22 +43,26 @@
     <form id="registrationForm">
       <div class="form-group">
         <label for="fullName">Full Name</label>
-        <input type="text" class="form-control" id="fullName" name="fullName" required>
+        <input type="text" class="form-control" id="fullName" aria-describedby="fullNameError" name="fullName" required>
+        <div class="invalid-feedback" id="fullNameError" ></div>
       </div>
 
       <div class="form-group">
         <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" name="email" required>
+        <input type="email" class="form-control" id="email" aria-describedby="emailError" name="email" required>
+        <div class="invalid-feedback" id="emailError"></div>
       </div>
 
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="password" required>
+        <input type="password" class="form-control" id="password" aria-describedby="passwordError" name="password" required>
+        <div class="invalid-feedback" id="passwordError"></div>
       </div>
 
       <div class="form-group">
         <label for="confirmPassword">Confirm Password</label>
-        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+        <input type="password" class="form-control" id="confirmPassword" aria-describedby="confirmPasswordError" name="confirmPassword" required>
+        <div class="error-message" id="confirmPasswordError"></div>
       </div>
 
       <div class="form-group">
@@ -112,12 +116,13 @@
           <label class="form-check-label" for="countryside">Countryside</label>
         </div>
       </div>
-
-      <div class="form-group form-check">
+      
+      <div class="form-group form-check mt-4 mb-4">
         <input type="checkbox" class="form-check-input" id="agreeTerms" name="agreeTerms" required>
+        
         <label class="form-check-label" for="agreeTerms">I agree to the terms and conditions</label>
       </div>
-
+      
       <button type="button" class="btn btn-primary" onclick="submitForm()">Sign Up</button>
     </form>
   </div>
@@ -135,6 +140,11 @@
 
   <script>
     function submitForm() {
+        if(!validateForm()) {
+          showErrorAlert("Invalid Data Provided");
+          return;
+        }
+
       var formData = new FormData(document.getElementById('registrationForm'));
       console.log(formData)
 var xhr = new XMLHttpRequest();
@@ -171,6 +181,75 @@ xhr.send(formData);
       // Insert the alert above the form
       document.getElementById('registrationForm').insertAdjacentElement('beforebegin', alertDiv);
       
+    }
+
+    function showErrorAlert(res) {
+      var alertDiv = document.createElement('div');
+      alertDiv.className = 'alert alert-danger alert-dismissible fade show mt-3';
+      alertDiv.role = 'alert';
+      alertDiv.innerHTML = res;
+
+      var closeButton = document.createElement('button');
+      closeButton.type = 'button';
+      closeButton.className = 'btn-close';
+      closeButton.setAttribute('data-bs-dismiss', 'alert');
+      closeButton.setAttribute('aria-label', 'close');
+ 
+      alertDiv.appendChild(closeButton);
+     
+      // Insert the alert above the form
+      document.getElementById('registrationForm').insertAdjacentElement('beforebegin', alertDiv);
+      
+    }
+
+
+    function validateForm() {
+     
+      document.getElementById('fullNameError').textContent = '';
+      document.getElementById('emailError').textContent = '';
+      document.getElementById('passwordError').textContent = '';
+      document.getElementById('confirmPasswordError').textContent= '';
+     
+      var fullName = document.getElementById('fullName').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var password = document.getElementById('password').value.trim();
+      var confirmPassword = document.getElementById('confirmPassword').value.trim();
+    
+      if (fullName === '') {
+        document.getElementById('fullNameError').textContent = 'Full Name is required';
+        return false;
+      }
+      else if(isNameValid(fullName)){
+        document.getElementById('fullNameError').textContent = 'Ful Name should not contain any digits.';
+        return false;
+      }
+
+    if (!isValidEmail(email)) {
+        document.getElementById('emailError').textContent = 'Enter a valid email address';
+        return false;
+      }
+
+    
+      if (password.length < 6) {
+        document.getElementById('passwordError').textContent = 'Password must be at least 6 characters';
+        return false;
+      }
+      else if(password != confirmPassword){
+        document.getElementById('confirmPasswordError').textContent = "Does not match with Password."
+        return false;
+      }
+
+       return true;
+    }
+
+    function isNameValid(name){
+      var nameRegex = /^([^0-9]*)$/;
+      return nameRegex.test(name);
+    }
+
+    function isValidEmail(email) {
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
     }
   </script>
 
