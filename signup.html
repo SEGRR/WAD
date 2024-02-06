@@ -43,31 +43,31 @@
     <form id="registrationForm">
       <div class="form-group">
         <label for="fullName">Full Name</label>
-        <input type="text" class="form-control" id="fullName" aria-describedby="fullNameError" name="fullName" required>
-        <div class="invalid-feedback" id="fullNameError" ></div>
+        <input type="text" onblur="validateFullName()" minlength="6" maxlength="15"  class="form-control" id="fullName" aria-describedby="fullNameError" name="fullName" required>
+        <div class="invalid-feedback" id="fullNameError" >Only Alphabets allowed</div>
       </div>
 
       <div class="form-group">
         <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" aria-describedby="emailError" name="email" required>
+        <input onblur="validateEmail()" type="email" class="form-control" id="email" aria-describedby="emailError" name="email" required>
         <div class="invalid-feedback" id="emailError"></div>
       </div>
 
       <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" aria-describedby="passwordError" name="password" required>
+        <label  for="password">Password</label>
+        <input onblur="validatePassword()" type="password" class="form-control" id="password" aria-describedby="passwordError" name="password" required>
         <div class="invalid-feedback" id="passwordError"></div>
       </div>
 
       <div class="form-group">
         <label for="confirmPassword">Confirm Password</label>
-        <input type="password" class="form-control" id="confirmPassword" aria-describedby="confirmPasswordError" name="confirmPassword" required>
-        <div class="error-message" id="confirmPasswordError"></div>
+        <input type="password" onblur="validateConfirmPassword()" class="form-control" id="confirmPassword" aria-describedby="confirmPasswordError" name="confirmPassword" required>
+        <div class="invalid-feedback" id="confirmPasswordError"></div>
       </div>
 
       <div class="form-group">
         <label for="dob">Date of Birth</label>
-        <input type="date" class="form-control" id="dob" name="dob" required>
+        <input type="date" class="form-control" id="dob" name="dob"  required>
       </div>
 
       <div class="form-group">
@@ -120,7 +120,8 @@
       <div class="form-group form-check mt-4 mb-4">
         <input type="checkbox" class="form-check-input" id="agreeTerms" name="agreeTerms" required>
         
-        <label class="form-check-label" for="agreeTerms">I agree to the terms and conditions</label>
+        <label class="form-check-label" onblur="validateTerms()" for="agreeTerms">I agree to the terms and conditions</label>
+        <div class="invalid-feedback" id="agreeTermsError"></div>
       </div>
       
       <button type="button" class="btn btn-primary" onclick="submitForm()">Sign Up</button>
@@ -137,6 +138,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"
     integrity="sha384-+971fOzCO0P7pOetkLH6t8U5WKeXbdq2jauo3f9PZGGqStxhJgWb3BbYQyQ9l0hM"
     crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
   <script>
     function submitForm() {
@@ -204,54 +207,71 @@ xhr.send(formData);
 
 
     function validateForm() {
-     
+      // Reset error messages and remove is-invalid class from form controls
       document.getElementById('fullNameError').textContent = '';
       document.getElementById('emailError').textContent = '';
       document.getElementById('passwordError').textContent = '';
-      document.getElementById('confirmPasswordError').textContent= '';
-     
+      document.getElementById('agreeTermsError').style.display = 'none';
+
+      document.getElementById('fullName').classList.remove('is-invalid');
+      document.getElementById('email').classList.remove('is-invalid');
+      document.getElementById('password').classList.remove('is-invalid');
+      document.getElementById('agreeTerms').classList.remove('is-invalid');
+
+      // Get form values
       var fullName = document.getElementById('fullName').value.trim();
       var email = document.getElementById('email').value.trim();
       var password = document.getElementById('password').value.trim();
-      var confirmPassword = document.getElementById('confirmPassword').value.trim();
-    
+      var agreeTerms = document.getElementById('agreeTerms').checked;
+
+      // Validation for Full Name
       if (fullName === '') {
         document.getElementById('fullNameError').textContent = 'Full Name is required';
-        return false;
-      }
-      else if(isNameValid(fullName)){
-        document.getElementById('fullNameError').textContent = 'Ful Name should not contain any digits.';
-        return false;
+        document.getElementById('fullName').classList.add('is-invalid');
+        return;
       }
 
-    if (!isValidEmail(email)) {
+      // Validation for Email
+      if (email === '') {
+        document.getElementById('emailError').textContent = 'Email is required';
+        document.getElementById('email').classList.add('is-invalid');
+        return;
+      } else if (!isValidEmail(email)) {
         document.getElementById('emailError').textContent = 'Enter a valid email address';
-        return false;
+        document.getElementById('email').classList.add('is-invalid');
+        return;
       }
 
-    
-      if (password.length < 6) {
+      // Validation for Password
+      if (password === '') {
+        document.getElementById('passwordError').textContent = 'Password is required';
+        document.getElementById('password').classList.add('is-invalid');
+        return;
+      } else if (password.length < 6) {
         document.getElementById('passwordError').textContent = 'Password must be at least 6 characters';
-        return false;
-      }
-      else if(password != confirmPassword){
-        document.getElementById('confirmPasswordError').textContent = "Does not match with Password."
-        return false;
+        document.getElementById('password').classList.add('is-invalid');
+        return;
       }
 
-       return true;
-    }
+      // Validation for Agree to Terms
+      if (!agreeTerms) {
+        document.getElementById('agreeTermsError').style.display = 'block';
+        document.getElementById('agreeTerms').classList.add('is-invalid');
+        return;
+      }
 
-    function isNameValid(name){
-      var nameRegex = /^([^0-9]*)$/;
-      return nameRegex.test(name);
+      // If all validations pass, you can submit the form
+      document.getElementById('registrationForm').submit();
     }
 
     function isValidEmail(email) {
+      // Simple email validation regex
       var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(email);
     }
   </script>
+
+  <script src="validation.js"></script>
 
 </body>
 
