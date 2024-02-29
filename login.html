@@ -1,0 +1,81 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Sign in</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="signin.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+    <form method="post" target="localhost:8080/login" id="loginForm"  class="form-signin">
+      <img class="mb-4" src="favicon.png" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <label for="email" class="sr-only">Email address</label>
+      <input type="email"  id="email" class="form-control" name="email" aria-describedby="emailError" placeholder="Email address" required autofocus>
+      <div class="invalid-feedback" id="emailError">Email not found</div>
+      <label for="password" class="sr-only">Password</label>
+      <input type="password" id="password" class="form-control"  name="password" aria-describedby="passwordError" placeholder="Password" required>
+      <div class="invalid-feedback" id="passwordError"></div>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <a href="signup.html">Already have an account?</a>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+       $(document).ready(function() {
+   $('#loginForm').submit(function(event) {
+     event.preventDefault(); // Prevent form submission
+    console.log("form submit")
+     // Reset error messages
+     $('#emailError').text('');
+     $('#passwordError').text('');
+
+     // Get input values
+     var email = $('#email').val();
+     var password = $('#password').val();
+
+     // Validate email
+     if (!isValidEmail(email)) {
+       $('#email').addClass('is-invalid');
+       $('#emailError').text('Please enter a valid email address.');
+     } else {
+       $('#email').removeClass('is-invalid');
+     }
+
+     // Validate password length
+     if (password.length < 6) {
+       $('#password').addClass('is-invalid');
+       $('#passwordError').text('Password must be at least 6 characters long.');
+     } else {
+       $('#password').removeClass('is-invalid');
+     }
+   });
+
+   // Function to validate email format
+   function isValidEmail(email) {
+     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+     return emailRegex.test(email);
+   }
+ });
+    </script>
+
+  </body>
+</html>
