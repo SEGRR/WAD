@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card mt-5">
+          <div class="card-header">
+            Sign Up
+          </div>
+          <div class="card-body">
+            <form #form="ngForm"  (ngSubmit)="submit(form)" novalidate>
+              <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" class="form-control" name="name" id="fullname" placeholder="Enter your full name" ngModel>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email" ngModel>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" ngModel>
+              </div>
+              <div class="form-group">
+                <label for="password">Confirm Password</label>
+                <input type="password" class="form-control" name="cPassword" id="cPassword" placeholder="Re-enter your password" ngModel>
+              </div>
+              <div class="form-group">
+                <label for="travelFrequency">How often do you travel</label>
+                <select name="travelFrequency" class="form-control" id="travelFrequency" ngModel>
+                  <option value="select">Select</option>
+                  <option value="very often">Very Often</option>
+                  <option value="sometimes">Sometimes</option>
+                  <option value="very less">Very less</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="places">Favorite places to go</label><br>
+                <input type="checkbox" class="" name="places" id="places" value="beach" ngModel> Beach 
+                <input type="checkbox" class="" name="places" id="places"  value="mountains" ngModel> Mountains  <br>
+                <input type="checkbox" class="" name="places" id="places" value="forest"  ngModel> Forest
+                <input type="checkbox" class="" name="places" id="places" value="cities"  ngModel> Cities <br>
+              </div>
+              <div class="form-group">
+                <label for="password">Gender</label> <br>
+                <input type="radio"  name="gender" id="gender" value="male" ngModel>Male
+                <input type="radio"  name="gender" id="gender" value="female" ngModel>Female <br>
+              </div>
+              <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="setform" class="mt-3">
+      <h4>Your Form Data</h4>
+      <p>Fullname: {{ fullName }}</p>
+      <p>Email: {{ email }}</p>
+      <p>Password: {{password}}</p>
+      <p>confirm Password : {{cPassword}}</p>
+      <p>Gender : {{gender}}</p>
+      <p>Travle Frequency : {{travelFreq}}</p>
+      <p>Favorite Places : {{favPlaces}}</p>
+    </div>
+  </div>
+  
